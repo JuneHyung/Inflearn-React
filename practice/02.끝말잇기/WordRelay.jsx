@@ -13,6 +13,8 @@ const WordRelay = () => {
       setResult('딩동댕');
       setWord(value);
       setValue('');
+      // uncontrolled input으로 쓸 경우.
+      // e.target.children.word.value = '' 
       inputEl.current.focus();
     } else {
       setResult('땡');
@@ -21,11 +23,16 @@ const WordRelay = () => {
     }
   };
 
+  const onChangeInput = (e) =>{
+    setValue(e.target.value)
+  }
+
   return (
     <>
       <div>{word}</div>
         <form onSubmit={onSubmitForm}>
-          <input ref={inputEl} value={value} onChange={(e)=>setValue(e.currentTarget.value)} />
+          <lebel htmlFor="wordInput">글자를 입력하세요.</lebel>
+          <input id="wordInput" className="wordInput" ref={inputEl} value={value} onChange={onChangeInput} />
           <button>입력!</button>
         </form>
         <div>{result}</div>
