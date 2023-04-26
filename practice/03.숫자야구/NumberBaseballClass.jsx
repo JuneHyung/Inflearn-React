@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import Try from './Try';
 
 function getNumbers() {
@@ -67,18 +67,16 @@ class NumberBaseball extends Component {
       value: e.target.value,
     })
   };
-  fruits = [
-    { fruit: "사과", taste: "맛있다" },
-    { fruit: "바나나", taste: " 맛없다" },
-    { fruit: "포도", taste: "시다" },
-    { fruit: "귤", taste: "떫다" },
-  ]
+  
+  inputRef = createRef();
+  // onInputRef = (c) =>{this.input= c;}
+
   render() {
     return (
       <>
         <h1>{this.state.result}</h1>
         <form onSubmit={this.onSubmitForm}>
-          <input maxLength={4} value={this.state.value} onChange={this.onChangeInput}></input>
+          <input ref={this.inputRef} maxLength={4} value={this.state.value} onChange={this.onChangeInput}></input>
         </form>
         <div>시도 : {this.state.tries.length}</div>
         <ul>
