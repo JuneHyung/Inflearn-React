@@ -31,7 +31,7 @@ class Lotto extends Component{
         })
       }, (i+1)*1000)
     }
-    setTimeout(()=>{ // 보너스
+    this.timeout[6] = setTimeout(()=>{ // 보너스
       this.setState({
         bonus: winNumbers[6],
         redo: true,
